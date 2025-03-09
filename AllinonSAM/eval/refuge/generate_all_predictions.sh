@@ -1,0 +1,5 @@
+echo "Optic cup: "
+python generate_predictions.py --data_folder "/media/ubuntu/New Volume/jay/fundus_images/archive/REFUGE/test/Images_Cropped" --gt_path "/media/ubuntu/New Volume/jay/fundus_images/archive/REFUGE/test/Masks_Cropped" --data_config "config_refuge.yml" --model_config "model_svdtuning.yml" --pretrained_path "svdtuning_shiftscale_refuge_tal_focal075_alpha2_1e-4_512_cropped.pth" --save_path "svdtuning_shiftscale_refuge_tal_focal075_alpha2_1e-4_512_cropped/optic_cup" --labels_of_interest "optic cup" --device "cuda:1"
+
+echo "Optic Disk"
+python generate_predictions.py --data_folder "/media/ubuntu/New Volume/jay/fundus_images/archive/REFUGE/test/Images_Cropped" --gt_path "/media/ubuntu/New Volume/jay/fundus_images/archive/REFUGE/test/Masks_Cropped" --data_config "config_refuge.yml" --model_config "model_svdtuning.yml" --pretrained_path "svdtuning_shiftscale_refuge_tal_focal075_alpha2_1e-4_512_cropped.pth" --save_path "svdtuning_shiftscale_refuge_tal_focal075_alpha2_1e-4_512_cropped/optic_disk" --labels_of_interest "optic disk" --device "cuda:1"

@@ -1,0 +1,19 @@
+data_transforms:
+  a_min: 0
+  a_max: 255
+  img_size: 256
+  use_random_crop: False
+  use_rotation: True
+  rotation_angle: 10
+  use_saturation: False
+  saturation: 2
+  use_brightness: True
+  brightness: 2
+  use_horizontal_flip: False
+data:
+  name: ISIC2018
+  root_path: '/media/ubuntu/New Volume/jay/ISIC2018'
+  label_list: [1]
+  label_names: ['Lesion']
+  volume_channel: 2
+  negative_to_positive_ratio: -1
