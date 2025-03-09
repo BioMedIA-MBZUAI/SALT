@@ -1,0 +1,18 @@
+
+img_size: 512
+num_classes: 1
+in_channels: 3
+img_type: 'image'
+arch: "UNet"
+use_fdn: False
+
+
+training:
+  optimizer: 'adamw'
+  lr: 1e-4
+  batch_size: 8
+  num_epochs: 200
+  schedule_step: 200
+  schedule_step_factor: 0.2
+  weight_decay: 1e-2
+  loss: 'dice+CE'

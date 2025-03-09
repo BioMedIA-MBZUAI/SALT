@@ -1,0 +1,32 @@
+sam:
+  img_size: 1024
+  num_classes: 13
+  sam_type: "base"
+
+img_type: 'image'
+arch: "Prompt Adapted SAM"
+use_fdn: False
+decoder_training: 'none'
+mlp_transform: False
+
+prompts:
+  USE_TEXT_PROMPT: True
+  NUM_TEXT_REPEAT: 1
+  USE_IMAGE_PROMPT: False
+  USE_SLICE_NUM: False
+  LOCATION: 'prepend'
+  DROPOUT: 0
+  NUM_TOKENS: 5
+
+training:
+  optimizer: 'adamw'
+  lr: 1e-3
+  batch_size: 9
+  num_epochs: 1000
+  schedule_step: 200
+  schedule_step_factor: 0.2
+  weight_decay: 1e-2
+  loss: 'focal+dice'
+  reg_multiplier: 0
+
+use_lora: False
