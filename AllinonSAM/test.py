@@ -1,6 +1,7 @@
 import os
 import sys
 import numpy as np
+from data_utils import *
 from model import *
 from utils import *
 import torch

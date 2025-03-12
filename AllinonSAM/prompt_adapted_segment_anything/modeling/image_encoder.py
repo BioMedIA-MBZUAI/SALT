@@ -15,7 +15,7 @@ from typing import Optional, Tuple, Type
 from .common import LayerNorm2d, MLPBlock
 from .svd_layers import SVDLinear, SVDConv2d
 # from .SALT_layers import SALTLinear , SALTConv2d
-from .SALT import SALTLinear , SALTConv2d
+from .SALT_layers_please_work import SALTLinear , SALTConv2d
 # from .SALT_layers_3 import SALTLinear , SALTConv2d
 from .lora_layers import LoRAConv2D, LoRALinear
 # from .SALT_layer_dynamic import SALTLinear , SALTConv2d
