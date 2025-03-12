@@ -6,4 +6,4 @@
 
 nvidia-smi
 
-python /home/abdelrahman.elsayed/med-cvpr/AllinonSAM/driver_scratchpad.py
+python /home/abdelrahman.elsayed/med-cvpr/AllinonSAM/main.py

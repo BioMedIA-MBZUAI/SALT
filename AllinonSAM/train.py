@@ -4,13 +4,26 @@ import sys
 import copy
 import os
 
-from data_utils import *
 from model import *
 from utils import *
 import yaml
 from tqdm import tqdm
 import wandb
 from analyze import analyze_model_singular_values, visualize_analysis
+import torch
+import wandb
+from PIL import Image
+import numpy as np
+from utils import (
+    running_stats,
+    dice_collated,
+    compute_hd95,
+    fractal_dimension,
+    iou_coef,
+    average_closest_distance,
+)
+
+from pathlib import Path
 
 def print_model_parameters_stats(model):
     total_params = sum(p.numel() for p in model.parameters())
@@ -40,148 +53,15 @@ def print_model_parameters_stats(model):
             "*******************************************************************************************"
         )
 
-
-def train(
-    model,
-    tr_dataset,
-    val_dataset,
-    criterion,
-    optimizer,
-    sav_path="./checkpoints/temp.pth",
-    num_epochs=25,
-    bs=32,
-    device="cuda:0",
-):
-    model = model.to(device)
-    best_loss = 100000.0
-    best_dice = 0
-    best_HD95 = 1000000.0
-    best_acd = float("inf")
-    print("Training parameters: \n----------")
-    print("batch size: ", bs)
-    print("num epochs: ", num_epochs)
-    # sam_analz = analyze_model_singular_values(model)
-    # visualize_analysis(sam_analz , model_name = "sam")
-    for epoch in range(num_epochs):
-        print(f"Epoch {epoch}/{num_epochs - 1}")
-        print("-" * 10)
-        bs_count = 0
-        inputs_li, labels_li, text_ids_li, text_li, slice_num_li = [], [], [], [], []
-        running_loss = 0
-        running_dice = 0
-        count = 0
-        # run training
-        # print("eere: ",len(tr_dataset))
-        for i in range(len(tr_dataset)):
-            inputs, labels, _, text, slice_nums = tr_dataset[i]
-            inputs_li.append(inputs)
-            labels_li.append(labels)
-            text_li = text_li + [text] * (inputs.shape[0])
-            slice_num_li = slice_num_li + slice_nums
-            bs_count += 1
-            if (bs_count % bs == 0) or (i == len(tr_dataset) - 1):
-                # start training
-                bs_count = 0
-                inputs = torch.cat(inputs_li, dim=0)
-                labels = torch.cat(labels_li, dim=0)
-                inputs = inputs.to(device)
-                labels = labels.to(device)
-                with torch.set_grad_enabled(True):
-                    optimizer.zero_grad()
-                    outputs, reg_loss = model(inputs, text_li, slice_num_li)
-                    seg_loss = 0
-                    for c in criterion:
-                        seg_loss += c(outputs, labels.float())
-                    seg_loss.backward()
-                    optimizer.step()
-                    running_loss += seg_loss.cpu()
-
-                preds = outputs >= 0.5
-                ri, ru = running_stats(labels, preds)
-                running_dice += dice_collated(ri, ru)
-                count += ri.shape[0]
-
-                inputs_li = []
-                labels_li = []
-                text_li = []
-                slice_num_li = []
-        epoch_dice = running_dice / count
-
-        print("Training loss: ", running_loss / (1 + (len(tr_dataset) // bs)))
-        print("Training dice: ", epoch_dice)
-
-        # do val if epoch is a multiple of 5
-        if epoch % 5 == 0:
-            running_dice = 0
-            count = 0
-            for i in range(len(val_dataset)):
-                inputs, labels, _, text, slice_nums = val_dataset[i]
-                inputs_li.append(inputs)
-                labels_li.append(labels)
-                text_li = text_li + [text] * (inputs.shape[0])
-                slice_num_li = slice_num_li + slice_nums
-                bs_count += 1
-                if bs_count % bs == 0:
-                    # start training
-                    bs_count = 0
-                    inputs = torch.cat(inputs_li, dim=0)
-                    labels = torch.cat(labels_li, dim=0)
-                    inputs = inputs.to(device)
-                    labels = labels.to(device)
-                    with torch.set_grad_enabled(False):
-                        outputs, reg_loss = model(inputs, text_li, slice_num_li)
-                        preds = outputs >= 0.5
-                        ri, ru = running_stats(labels, preds)
-                        running_dice += dice_collated(ri, ru)
-                        count += ri.shape[0]
-
-                    inputs_li = []
-                    labels_li = []
-                    text_li = []
-                    slice_num_li = []
-            # epoch_dice = running_dice / (len(val_dataset))
-            epoch_dice = running_dice / count
-
-            print(f"Val Dice: {epoch_dice:.4f}")
-
-            # deep copy the model
-            if epoch_dice > best_dice:
-                # best_loss = epoch_loss
-                best_dice = epoch_dice
-                torch.save(model.state_dict(), sav_path)
-
-    return model
-
-
-import torch
-import wandb
-from tqdm import tqdm
-import os
-from PIL import Image
-import numpy as np
-from utils import (
-    running_stats,
-    dice_collated,
-    compute_hd95,
-    fractal_dimension,
-    iou_coef,
-    average_closest_distance,
-)
-
-import os
-from PIL import Image
-import numpy as np
-from pathlib import Path
-
 # Load configuration from data_config.yml
 with open(
-    "/home/abdelrahman.elsayed/med-cvpr/AllinonSAM/config_arcade.yml", "r"
+    "/home/abdelrahman.elsayed/med-cvpr/AllinonSAM/config_data.yml", "r"
 ) as data_config_file:
     data_config = yaml.safe_load(data_config_file)
 
 # Load configuration from model_svdtuning.yml
 with open(
-    "/home/abdelrahman.elsayed/med-cvpr/AllinonSAM/model_svdtuning.yml", "r"
+    "/home/abdelrahman.elsayed/med-cvpr/AllinonSAM/SALT_config.yml", "r"
 ) as model_config_file:
     model_config = yaml.safe_load(model_config_file)
 

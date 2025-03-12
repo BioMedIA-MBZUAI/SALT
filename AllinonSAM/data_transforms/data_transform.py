@@ -6,7 +6,7 @@ from torchvision.transforms import functional as F
 from torch.nn.functional import pad
 
 
-class Ultrasound_Transform():
+class Data_Transform():
     def __init__(self, config):
         self.pixel_mean = torch.Tensor([123.675, 116.28, 103.53]).view(-1,1,1)
         self.pixel_std = torch.Tensor([53.395, 57.12, 57.375]).view(-1,1,1)
@@ -93,7 +93,7 @@ class Ultrasound_Transform():
             b_min=0
             #scale intensities to 0-255
             b_min,b_max = 0, 255
-            img = (img - self.data_transforms['a_min']) / (self.data_transforms['a_max'] - self.data_transforms['a_min'])
+            img = (img - img.min()) / (img.max() - img.min())
             img = img * (b_max - b_min) + b_min
             img = torch.clamp(img,b_min,b_max)
 
