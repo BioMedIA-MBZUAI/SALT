@@ -48,10 +48,11 @@ You can download each dataset from Hugging Face:
 - 🔴 **Xray-Angio:** [Download here](https://huggingface.co/datasets/pythn/DB)
 
 Once downloaded, the dataset should have the following structure:
+
 dataset_name/  
-│── images/        # Image files  
-│── masks/         # Corresponding masks  
-│── data_split.csv # Train/Val/Test splits  
+  │── images/        # Image files  
+  │── masks/         # Corresponding masks  
+  │── data_split.csv # Train/Val/Test splits  
 
 ## Usage
 
