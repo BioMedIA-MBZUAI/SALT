@@ -33,9 +33,28 @@ git clone https://github.com/yourusername/SALT.git
 cd SALT
 ```
 
-Install dependencies:
+Create SALT Environment:
 
+```bash
+conda env create -f SALT_env.yml
+```
+## Datasets access
+You can download each dataset from Hugging Face:
 
+- 🟢 **ROSE:** [Download here](https://huggingface.co/datasets/pythn/ROSE)
+- 🔵 **ARCADE:** [Download here](https://huggingface.co/datasets/pythn/ARCADE)
+- 🟠 **drive:** [Download here](https://huggingface.co/datasets/pythn/drive)
+- 🟣 **DIAS:** [Download here](https://huggingface.co/datasets/pythn/DIAS)
+- 🔴 **Xray-Angio:** [Download here](https://huggingface.co/datasets/pythn/DB)
+
+Once downloaded, the dataset should have the following structure:
+dataset_name/ 
+│── images/
+ # Image files 
+│── masks/ 
+# Corresponding masks 
+|── data_split.csv 
+# Train/Val/Test splits
 
 ## Usage
 
