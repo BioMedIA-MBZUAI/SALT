@@ -9,7 +9,7 @@ import torch.nn as nn
 
 from typing import Type
 from .svd_layers import SVDLinear
-from .SALT import SALTLinear
+from .SALT_layers_please_work import SALTLinear
 # from .SALT_layers_3 import SALTLinear , SALTConv2d
 from .lora_layers import LoRAConv2D, LoRALinear
 # from .SALT_layer_dynamic import SALTLinear , SALTConv2d

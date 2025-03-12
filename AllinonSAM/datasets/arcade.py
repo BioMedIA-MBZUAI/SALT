@@ -3,9 +3,9 @@ import numpy as np
 import torch
 from PIL import Image
 from torch.utils.data import Dataset
-from data_transforms.data_transform import Data_Transform
+from data_transforms.btcv_transform import BTCV_Transform
 
-class GeneralDataset(Dataset):
+class ArcadeDataset(Dataset):
     def __init__(self, config, file_list=None, is_train=False, shuffle_list=True, apply_norm=True, no_text_mode=False) -> None:
         super().__init__()
         self.root_dir = config['data']['root_path']
@@ -31,7 +31,7 @@ class GeneralDataset(Dataset):
         if shuffle_list:
             np.random.shuffle(self.images)
 
-        self.data_transform = Data_Transform(config=config)
+        self.data_transform = BTCV_Transform(config=config)
 
     def __len__(self):
         return len(self.images)
