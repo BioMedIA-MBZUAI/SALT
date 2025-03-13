@@ -90,7 +90,7 @@ dataset_name/
 Here's a simplified overview of the repository and the purpose of each major file:
 
 ```
-SALT/
+AllinonSAM/
 ├── main.py                # Entry point for training/testing SALT
 ├── model.py               # Model definitions (Prompt_Adapted_SAM, Prompt_Adapted_SAM2)
 ├── train.py               # Core training loop and helper functions
