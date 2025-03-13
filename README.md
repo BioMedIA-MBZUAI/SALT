@@ -53,11 +53,11 @@ SALT is a novel Parameter-Efficient Fine-Tuning (PEFT) method designed to adapt 
 
 Below are the five medical imaging datasets highlighted in our experiments. Each dataset can be found on Hugging Face:
 
-- :green_heart: **[ROSE](https://huggingface.co/datasets/pythn/ROSE)** (Retinal OCT Angiography)  
-- :blue_heart: **[ARCADE](https://huggingface.co/datasets/pythn/ARCADE)** (Coronary Artery Segmentation)  
-- :orange_heart: **[DRIVE](https://huggingface.co/datasets/pythn/drive)** (Retinal Vessel Segmentation)  
-- :purple_heart: **[DIAS](https://huggingface.co/datasets/pythn/DIAS)** (Dynamic Digital Subtraction Angiography)  
-- :red_circle: **[Xray-Angio](https://huggingface.co/datasets/pythn/DB)** (Occluded Vessel Segmentation)
+- 🟢: **[ROSE](https://huggingface.co/datasets/pythn/ROSE)** (Retinal OCT Angiography)  
+- 🔵: **[ARCADE](https://huggingface.co/datasets/pythn/ARCADE)** (Coronary Artery Segmentation)  
+- 🟠: **[DRIVE](https://huggingface.co/datasets/pythn/drive)** (Retinal Vessel Segmentation)  
+- 🟡: **[DIAS](https://huggingface.co/datasets/pythn/DIAS)** (Dynamic Digital Subtraction Angiography)  
+- 🔴: **[Xray-Angio](https://huggingface.co/datasets/pythn/DB)** (Occluded Vessel Segmentation)
 
 Please organize each dataset as follows:
 
@@ -181,19 +181,6 @@ python main.py \
 ```
 > **Note:** You may need to adjust `device` based on your system (e.g., `"cuda:1"` or `"cpu"`).
 
-### 3. Evaluation / Testing
-
-In `main.py`, there is a sample function `main_test()` which you can call to load a checkpoint and compute metrics:
-```bash
-python main.py \
-  --data_config configs/config_data.yaml \
-  --model_config configs/SALT_config.yaml \
-  --pretrained_path checkpoints/salt_model.pth \
-  --training_strategy salt \
-  --device cuda:0
-```
-Make sure the code path calls `main_test` instead of `main_train` to run in inference/validation mode.
-
 ---
 
 ## Command Examples
@@ -218,16 +205,6 @@ Make sure the code path calls `main_test` instead of `main_train` to run in infe
      --training_strategy lora \
      --device cuda:0
    ```
-3. **Testing / Inference** :mag:
-   ```bash
-   python main.py \
-     --data_config configs/config_data.yaml \
-     --model_config configs/SALT_config.yaml \
-     --pretrained_path checkpoints/salt_model.pth \
-     --training_strategy salt \
-     --device cuda:0
-   ```
-   > Double-check that the testing logic is invoked (e.g., call `main_test()` instead of `main_train()`).
 
 ---
 
@@ -241,7 +218,7 @@ Here’s a brief summary of SALT’s performance versus other PEFT methods:
 | S-SAM           | 0.71          | 30.12         | 0.40%               |
 | **SALT (Ours)** | **0.74**      | **23.87**     | **3.90%**           |
 
-:sparkling_heart: **SALT** provides the best Dice and HD95 among these PEFT methods, striking a strong balance between accuracy and parameter efficiency.
+🔥: **SALT** provides the best Dice and HD95 among these PEFT methods, striking a strong balance between accuracy and parameter efficiency.
 
 ---
 
