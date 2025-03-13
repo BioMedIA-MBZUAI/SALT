@@ -79,20 +79,22 @@ Here's a simplified overview of the repository and the purpose of each major fil
 ```
 SALT/
 ├── main.py                # Entry point for training/testing SALT
-├── model.py               # Model definitions (Prompt_Adapted_SAM, Prompt_Adapted_SAM2, SALT modules)
+├── model.py               # Model definitions (Prompt_Adapted_SAM, Prompt_Adapted_SAM2)
 ├── train.py               # Core training loop and helper functions
 ├── test.py                # Evaluation and metrics computation
-├── data/
+├── datasets/
 │   └── data.py            # Custom Dataset (GeneralDataset) and data loader logic
-├── utils/
-│   └── losses.py          # Dice, Focal, and other loss functions
-├── configs/
-│   ├── config_data.yaml   # Example data config
-│   ├── SALT_config.yaml   # Example SALT model config
-│   └── ...
-├── requirements.txt
+├── utils.py          # Dice, Focal, and other loss functions
+├── data_transforms/
+│   ├── data_transforms.py # Contains Data_Transform class
+├── prompt_adapted_SAM2/
+│   ├── .... # Contains the implementation for Prompt Adapted SAM 2 along with LoRA , SVD , SALT layers.
+├── prompt_adapted_segment_anything/
+│   ├── .... # Contains the implementation for Prompt Adapted SAM along with LoRA , SVD , SALT layers.
 ├── SALT_env.yml
-└── ...
+└── config_data.yml # Contains example data set configuration
+└── SALT_config.yml # Contains example model and training configuration
+└── ... # Other complementary files for doing model analysis, submitting jobs,...etc
 ```
 
 - **`main.py`**  
