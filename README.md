@@ -1,72 +1,255 @@
 # SALT: Parameter-Efficient Fine-Tuning via Singular Value Adaptation with Low-Rank Transformation
 
-SALT is a novel Parameter-Efficient Fine-Tuning (PEFT) approach designed to adapt foundation models effectively for precise medical image segmentation.
+SALT is a novel Parameter-Efficient Fine-Tuning (PEFT) method designed to adapt large-scale foundation models—especially **Segment Anything Model (SAM)**—to domain-specific tasks such as **medical image segmentation**. With SALT, you can achieve **state-of-the-art** segmentation performance while training **only a small percentage of parameters**.
 
-## Overview
-SALT combines the strengths of Singular Value Decomposition (SVD)-based adaptation and Low-Rank Adaptation (LoRA). It selectively updates dominant singular values with trainable scale and shift parameters and applies low-rank updates to the residual singular subspace, resulting in robust and efficient fine-tuning.
+---
 
-## Key Highlights
-- **Hybrid PEFT Approach:** Combines strengths of LoRA and SVD.
-- **Superior Performance:** Outperforms existing PEFT methods by 2-5% Dice improvement.
-- **Minimal Parameter Overhead:** Achieves state-of-the-art performance with only 3.9% trainable parameters.
+## Table of Contents
+1. [Key Features](#key-features)
+2. [Installation](#installation)
+3. [Datasets](#datasets)
+4. [Repository Structure](#repository-structure)
+5. [Usage](#usage)
+   - [1. Configuration Files](#1-configuration-files)
+   - [2. Training](#2-training)
+   - [3. Evaluation / Testing](#3-evaluation--testing)
+6. [Command Examples](#command-examples)
+7. [Performance Highlights](#performance-highlights)
+8. [Citations](#citations)
+9. [License](#license)
 
-## Evaluated Datasets
-- **ARCADE:** Coronary artery segmentation from X-ray angiography
-- **DIAS:** Intracranial artery segmentation in Dynamic Digital Subtraction Angiography (DSA)
-- **ROSE:** Retinal OCT angiography segmentation
-- **XRay-Angio:** Multiscale segmentation of occluded vessels
-- **DRIVE:** Retinal vessel segmentation in RGB fundus images
+---
 
-## Results Summary
+## Key Features
 
-| Method | Avg. Dice Score | Avg. HD95 | Trainable Parameters (%) |
-|--------|-----------------|-------------|--------------------------|
-| LoRA   | 0.70            | 25.94       | 14.08%                  |
-| S-SAM  | 0.71            | 30.12       | 0.40%                    |
-| **SALT (ours)** | **0.74**    | **23.87**   | **3.90%**              |
+- :star2: **Hybrid PEFT**  
+  Merges SVD-based parameter updates for top singular values with LoRA for the residual subspace.
+- :chart_with_upwards_trend: **Parameter Efficiency**  
+  Yields SOTA performance with as little as **3.9%** of total parameters being trainable.
+- :microscope: **Robust Medical Adaptation**  
+  Outperforms other PEFT methods (LoRA, S-SAM) by **2–5%** in Dice scores across challenging medical datasets.
+- :wrench: **Easy Integration**  
+  Provided as a drop-in module for existing SAM pipelines, requiring minimal code changes.
+
+---
 
 ## Installation
 
-Clone the repository:
-```bash
-git clone https://github.com/yourusername/SALT.git
-cd SALT
+1. **Clone this repository** :cloning:  
+   ```bash
+   git clone https://github.com/YourUsername/SALT.git
+   cd SALT
+   ```
+   
+2. **Set up a Conda environment** :snake:  
+   ```bash
+   conda env create -f SALT_env.yml
+   conda activate SALT
+   ```
+   > **Note:** Verify or modify the packages in `SALT_env.yml` as required (e.g., PyTorch version, CUDA, etc.).
+---
+
+## Datasets
+
+Below are the five medical imaging datasets highlighted in our experiments. Each dataset can be found on Hugging Face:
+
+- :green_heart: **[ROSE](https://huggingface.co/datasets/pythn/ROSE)** (Retinal OCT Angiography)  
+- :blue_heart: **[ARCADE](https://huggingface.co/datasets/pythn/ARCADE)** (Coronary Artery Segmentation)  
+- :orange_heart: **[DRIVE](https://huggingface.co/datasets/pythn/drive)** (Retinal Vessel Segmentation)  
+- :purple_heart: **[DIAS](https://huggingface.co/datasets/pythn/DIAS)** (Dynamic Digital Subtraction Angiography)  
+- :red_circle: **[Xray-Angio](https://huggingface.co/datasets/pythn/DB)** (Occluded Vessel Segmentation)
+
+Please organize each dataset as follows:
+
 ```
-
-Create SALT Environment:
-
-```bash
-conda env create -f SALT_env.yml
-```
-## Datasets access
-You can download each dataset from Hugging Face:
-
-- 🟢 **ROSE:** [Download here](https://huggingface.co/datasets/pythn/ROSE)
-- 🔵 **ARCADE:** [Download here](https://huggingface.co/datasets/pythn/ARCADE)
-- 🟠 **drive:** [Download here](https://huggingface.co/datasets/pythn/drive)
-- 🟣 **DIAS:** [Download here](https://huggingface.co/datasets/pythn/DIAS)
-- 🔴 **Xray-Angio:** [Download here](https://huggingface.co/datasets/pythn/DB)
-
-Once downloaded, the dataset should have the following structure:
-```bash
 dataset_name/
-├── images/        # Image files  
-├── masks/         # Corresponding masks  
-└── data_split.csv # Train/Val/Test splits  
+├── images/               # Folder containing image files
+├── masks/                # Folder containing segmentation masks
+└── data_split.csv        # CSV specifying [imgs, split] columns for train/val/test
 ```
-## Usage
 
-### Training
+> **Tip:** Make sure the file paths in `data_split.csv` correspond exactly to those in the `images/` and `masks/` folders.
 
-
+---
 
 ## Repository Structure
 
+Here's a simplified overview of the repository and the purpose of each major file:
 
+```
+SALT/
+├── main.py                # Entry point for training/testing SALT
+├── model.py               # Model definitions (Prompt_Adapted_SAM, Prompt_Adapted_SAM2, SALT modules)
+├── train.py               # Core training loop and helper functions
+├── test.py                # Evaluation and metrics computation
+├── data/
+│   └── data.py            # Custom Dataset (GeneralDataset) and data loader logic
+├── utils/
+│   └── losses.py          # Dice, Focal, and other loss functions
+├── configs/
+│   ├── config_data.yaml   # Example data config
+│   ├── SALT_config.yaml   # Example SALT model config
+│   └── ...
+├── requirements.txt
+├── SALT_env.yml
+└── ...
+```
 
-## Citation
+- **`main.py`**  
+  Parses command-line arguments, loads datasets, sets up models, and invokes training or testing.
 
+- **`model.py`**  
+  Houses the `Prompt_Adapted_SAM` and `Prompt_Adapted_SAM2` classes, plus SALT/LoRA logic.
+
+- **`train.py`**  
+  Contains the main training function, optimization loops, checkpoint saving, etc.
+
+- **`test.py`**  
+  Handles inference and computing evaluation metrics (e.g., Dice, HD95).
+
+- **`data/data.py`**  
+  Implements the `GeneralDataset` for image-mask pair loading and augmentation.
+
+- **`utils/losses.py`**  
+  Provides a variety of segmentation loss functions (Dice, BCE, Focal, WeightedCE).
+
+---
+
+## Usage
+
+### 1. Configuration Files
+
+You’ll need two primary YAML files:
+
+1. **Data Config (`config_data.yaml`)**  
+   Defines your dataset root path, transforms, image size, label definitions, etc. Example:
+   ```yaml
+   data_transforms:
+     a_min: 0
+     a_max: 255
+     img_size: 512
+     ...
+   data:
+     root_path: '/path/to/ROSE'
+     data_split_csv: '/path/to/ROSE/data_split.csv'
+     label_list: [0, 1]
+     label_names: ["Background", "Vein"]
+     ...
+   ```
+
+2. **Model Config (`SALT_config.yaml`)**  
+   Specifies model settings, optimizer, LoRA/SALT ranks, etc. Example:
+   ```yaml
+   sam:
+     img_size: 512
+     num_classes: 2
+     sam_type: "base"
+
+   training:
+     optimizer: 'adamw'
+     lr: 1e-4
+     batch_size: 8
+     num_epochs: 200
+     ...
+   ft:
+     type: 'svd'    # Could be 'svd', 'lora', or 'salt'
+     svd_rank_linear: 0
+     svd_rank_conv2d: 0
+     r_lora: 4
+   ```
+
+### 2. Training
+
+Use the script `main.py` to train. Key flags include:
+- `--data_config`: path to YAML for data
+- `--model_config`: path to YAML for model and training hyperparameters
+- `--pretrained_path`: path to your SAM checkpoint (if applicable)
+- `--save_path`: where to store trained weights
+- `--training_strategy`: one of `[salt, svdbiastuning, biastuning, lora]`
+
+For example:
+```bash
+python main.py \
+  --data_config configs/config_data.yaml \
+  --model_config configs/SALT_config.yaml \
+  --pretrained_path /path/to/sam_checkpoint.pth \
+  --save_path checkpoints/salt_model.pth \
+  --training_strategy salt \
+  --device cuda:0
+```
+> **Note:** You may need to adjust `device` based on your system (e.g., `"cuda:1"` or `"cpu"`).
+
+### 3. Evaluation / Testing
+
+In `main.py`, there is a sample function `main_test()` which you can call to load a checkpoint and compute metrics:
+```bash
+python main.py \
+  --data_config configs/config_data.yaml \
+  --model_config configs/SALT_config.yaml \
+  --pretrained_path checkpoints/salt_model.pth \
+  --training_strategy salt \
+  --device cuda:0
+```
+Make sure the code path calls `main_test` instead of `main_train` to run in inference/validation mode.
+
+---
+
+## Command Examples
+
+1. **Training with SALT** :sparkles:
+   ```bash
+   python main.py \
+     --data_config configs/config_data.yaml \
+     --model_config configs/SALT_config.yaml \
+     --pretrained_path /path/to/sam_checkpoint.pth \
+     --save_path checkpoints/salt_model.pth \
+     --training_strategy salt \
+     --device cuda:0
+   ```
+2. **Training with LoRA** :tada:
+   ```bash
+   python main.py \
+     --data_config configs/config_data.yaml \
+     --model_config configs/SALT_config.yaml \
+     --pretrained_path /path/to/sam_checkpoint.pth \
+     --save_path checkpoints/lora_model.pth \
+     --training_strategy lora \
+     --device cuda:0
+   ```
+3. **Testing / Inference** :mag:
+   ```bash
+   python main.py \
+     --data_config configs/config_data.yaml \
+     --model_config configs/SALT_config.yaml \
+     --pretrained_path checkpoints/salt_model.pth \
+     --training_strategy salt \
+     --device cuda:0
+   ```
+   > Double-check that the testing logic is invoked (e.g., call `main_test()` instead of `main_train()`).
+
+---
+
+## Performance Highlights
+
+Here’s a brief summary of SALT’s performance versus other PEFT methods:
+
+| **Method**      | **Avg. Dice** | **Avg. HD95** | **Trainable Params** |
+|-----------------|---------------|---------------|----------------------|
+| LoRA (rank=256) | 0.70          | 25.94         | 14.08%              |
+| S-SAM           | 0.71          | 30.12         | 0.40%               |
+| **SALT (Ours)** | **0.74**      | **23.87**     | **3.90%**           |
+
+:sparkling_heart: **SALT** provides the best Dice and HD95 among these PEFT methods, striking a strong balance between accuracy and parameter efficiency.
+
+---
+
+## Citations
+
+Coming Soon...
+
+---
 
 ## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
+This project is released under the [MIT License](LICENSE).  
+You are free to use, modify, and distribute this software; see the LICENSE file for details.
