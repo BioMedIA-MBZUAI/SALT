@@ -6,14 +6,14 @@ SALT is a novel Parameter-Efficient Fine-Tuning (PEFT) method designed to adapt 
 
 ## Table of Contents
 1. [Key Features](#key-features)
-2. [Installation](#installation)
-3. [Datasets](#datasets)
-4. [Repository Structure](#repository-structure)
-5. [Usage](#usage)
+2. [Performance Highlights](#performance-highlights)
+3. [Installation](#installation)
+4. [Datasets](#datasets)
+5. [Repository Structure](#repository-structure)
+6. [Usage](#usage)
    - [1. Configuration Files](#1-configuration-files)
    - [2. Training](#2-training)
-6. [Command Examples](#command-examples)
-7. [Performance Highlights](#performance-highlights)
+7. [Command Examples](#command-examples)
 8. [Citations](#citations)
 9. [License](#license)
 
@@ -29,6 +29,20 @@ SALT is a novel Parameter-Efficient Fine-Tuning (PEFT) method designed to adapt 
   Outperforms other PEFT methods (LoRA, S-SAM) by **2–5%** in Dice scores across challenging medical datasets.
 - :wrench: **Easy Integration**  
   Provided as a drop-in module for existing SAM pipelines, requiring minimal code changes.
+
+---
+
+## Performance Highlights
+
+Here’s a brief summary of SALT’s performance versus other PEFT methods:
+
+| **Method**      | **Avg. Dice** | **Avg. HD95** | **Trainable Params** |
+|-----------------|---------------|---------------|----------------------|
+| LoRA (rank=256) | 0.70          | 25.94         | 14.08%              |
+| S-SAM           | 0.71          | 30.12         | 0.40%               |
+| **SALT (Ours)** | **0.74**      | **23.87**     | **3.90%**           |
+
+🔥: **SALT** provides the best Dice and HD95 among these PEFT methods, striking a strong balance between accuracy and parameter efficiency.
 
 ---
 
@@ -204,20 +218,6 @@ python main.py \
      --training_strategy lora \
      --device cuda:0
    ```
-
----
-
-## Performance Highlights
-
-Here’s a brief summary of SALT’s performance versus other PEFT methods:
-
-| **Method**      | **Avg. Dice** | **Avg. HD95** | **Trainable Params** |
-|-----------------|---------------|---------------|----------------------|
-| LoRA (rank=256) | 0.70          | 25.94         | 14.08%              |
-| S-SAM           | 0.71          | 30.12         | 0.40%               |
-| **SALT (Ours)** | **0.74**      | **23.87**     | **3.90%**           |
-
-🔥: **SALT** provides the best Dice and HD95 among these PEFT methods, striking a strong balance between accuracy and parameter efficiency.
 
 ---
 
