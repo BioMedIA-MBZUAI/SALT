@@ -12,7 +12,6 @@ SALT is a novel Parameter-Efficient Fine-Tuning (PEFT) method designed to adapt 
 5. [Usage](#usage)
    - [1. Configuration Files](#1-configuration-files)
    - [2. Training](#2-training)
-   - [3. Evaluation / Testing](#3-evaluation--testing)
 6. [Command Examples](#command-examples)
 7. [Performance Highlights](#performance-highlights)
 8. [Citations](#citations)
