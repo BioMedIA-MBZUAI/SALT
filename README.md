@@ -2,7 +2,7 @@
 
 SALT is a novel Parameter-Efficient Fine-Tuning (PEFT) method designed to adapt large-scale foundation models—especially **Segment Anything Model (SAM)**—to domain-specific tasks such as **medical image segmentation**. With SALT, you can achieve **state-of-the-art** segmentation performance while training **only a small percentage of parameters**.
 
-![Methodology](method.png)
+![Methodology](images/method.png)
 
 ---
 
