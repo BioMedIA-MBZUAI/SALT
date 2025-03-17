@@ -8,14 +8,14 @@ SALT is a novel Parameter-Efficient Fine-Tuning (PEFT) method designed to adapt 
 
 ## Table of Contents
 1. [Key Features](#key-features)
-2. [Performance Highlights](#performance-highlights)
-3. [Installation](#installation)
-4. [Datasets](#datasets)
-5. [Repository Structure](#repository-structure)
-6. [Usage](#usage)
+2. [Installation](#installation)
+3. [Datasets](#datasets)
+4. [Repository Structure](#repository-structure)
+5. [Usage](#usage)
    - [1. Configuration Files](#1-configuration-files)
    - [2. Training](#2-training)
-7. [Command Examples](#command-examples)
+6. [Command Examples](#command-examples)
+7. [Performance Highlights](#performance-highlights)
 8. [Citations](#citations)
 9. [License](#license)
 
