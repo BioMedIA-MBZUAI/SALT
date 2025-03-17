@@ -34,20 +34,6 @@ SALT is a novel Parameter-Efficient Fine-Tuning (PEFT) method designed to adapt 
 
 ---
 
-## Performance Highlights
-
-Here’s a brief summary of SALT’s performance versus other PEFT methods:
-
-| **Method**      | **Avg. Dice** | **Avg. HD95** | **Trainable Params** |
-|-----------------|---------------|---------------|----------------------|
-| LoRA (rank=256) | 0.70          | 25.94         | 14.08%              |
-| S-SAM           | 0.71          | 30.12         | 0.40%               |
-| **SALT (Ours)** | **0.74**      | **23.87**     | **3.90%**           |
-
-🔥: **SALT** provides the best Dice and HD95 among these PEFT methods, striking a strong balance between accuracy and parameter efficiency.
-
----
-
 ## Installation
 
 1. **Clone this repository** :cloning:  
@@ -222,7 +208,19 @@ python main.py \
    ```
 
 ---
+## Performance Highlights
 
+Here’s a brief summary of SALT’s performance versus other PEFT methods:
+
+| **Method**      | **Avg. Dice** | **Avg. HD95** | **Trainable Params** |
+|-----------------|---------------|---------------|----------------------|
+| LoRA (rank=256) | 0.70          | 25.94         | 14.08%              |
+| S-SAM           | 0.71          | 30.12         | 0.40%               |
+| **SALT (Ours)** | **0.74**      | **23.87**     | **3.90%**           |
+
+🔥: **SALT** provides the best Dice and HD95 among these PEFT methods, striking a strong balance between accuracy and parameter efficiency.
+
+---
 ## Citations
 
 Coming Soon...
