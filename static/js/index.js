@@ -11,7 +11,32 @@ function preloadInterpolationImages() {
     interp_images[i].src = path;
   }
 }
-
+document.addEventListener('DOMContentLoaded', function() {
+  const track = document.querySelector('.slider-track');
+  const slides = document.querySelectorAll('.slide');
+  let currentIndex = 0;
+  
+  function updateSlidePosition() {
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }
+  
+  // Add click event to each slide (image click advances to the next slide)
+  slides.forEach(slide => {
+    slide.addEventListener('click', () => {
+      // Remove bubble if it exists (only on first click)
+      const bubble = document.querySelector('.bubble');
+      if (bubble) {
+        bubble.remove();
+      }
+      // Advance to the next slide
+      currentIndex = (currentIndex + 1) % slides.length;
+      updateSlidePosition();
+    });
+  });
+  
+  // Initialize the slider
+  updateSlidePosition();
+});
 function setInterpolationImage(i) {
   var image = interp_images[i];
   image.ondragstart = function() { return false; };
