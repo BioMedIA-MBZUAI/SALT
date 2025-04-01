@@ -126,6 +126,94 @@ body {
 .results-carousel video {
   margin: 0;
 }
+table {
+  border-collapse: collapse;
+  margin: 1em auto; /* Center the table */
+  width: 80%;       /* Adjust as needed */
+  font-family: Arial, sans-serif;
+}
+
+caption {
+  caption-side: top;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 0.75em 1em;
+  text-align: center;
+}
+
+th {
+  background-color: #f8f8f8;
+}
+
+/* Slider container styles */
+.slider {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* Ensures bubble can be absolutely positioned inside */
+.slider-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* The track that slides horizontally */
+.slider-track {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+/* Each slide occupies full width */
+.slide {
+  min-width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* Responsive images with clickable pointer */
+.slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+  cursor: pointer;
+}
+
+/* Bubble overlay styles */
+.bubble {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(0, 123, 255, 0.8);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: bubble-pulse 2s infinite;
+  pointer-events: none; /* So clicks pass through to the image */
+}
+
+/* Bubble pulse animation */
+@keyframes bubble-pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+}
 
 
 .interpolation-panel {
