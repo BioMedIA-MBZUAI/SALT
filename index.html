@@ -1,126 +1,91 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="description"
-        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
-  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nerfies: Deformable Neural Radiance Fields</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+<meta property='og:title' content='SALT: Parameter-Efficient Fine-Tuning via Singular Value Adaptation with Low-Rank Transformation.'/>
+<meta property='og:image' content=''/>
+<meta property='og:description' content=''/>
+<meta property='og:url' content='https://github.com/BioMedIA-MBZUAI/FetalCLIP'/>
+<meta property='og:image:width' content='1200' />
+<meta property='og:image:height' content='663' />
+<!-- TYPE BELOW IS PROBABLY: 'website' or 'article' or look on https://ogp.me/#types -->
+<meta property="og:type" content='website'/>
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9VZKE74FPW"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', 'G-PYVRSFMDRL');
-  </script>
+    gtag('config', 'G-9VZKE74FPW');
+</script>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="SALT: Parameter-Efficient Fine-Tuning via Singular Value Adaptation with Low-Rank Transformation.">
+  <meta name="keywords" content="FetalCLIP">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SALT: Parameter-Efficient Fine-Tuning via Singular Value Adaptation with Low-Rank Transformation.</title>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
-
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/tab_gallery.css">
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
   <link rel="icon" href="./static/images/favicon.svg">
+  <link rel="stylesheet" href="juxtapose/css/juxtapose.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
+  <script src="./static/js/magnifier.js"></script>
+  <link href="https://fonts.cdnfonts.com/css/menlo" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/image_card_fader.css">
+  <link rel="stylesheet" href="./static/css/image_card_slider.css">
+
 </head>
+
+<style>
+  @import url('https://fonts.cdnfonts.com/css/menlo');
+</style>
+
+
 <body>
-
-<!-- <nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-  <div class="navbar-menu">
-    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="https://keunhong.com">
-      <span class="icon">
-          <i class="fas fa-home"></i>
-      </span>
-      </a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More Research
-        </a>
-        <div class="navbar-dropdown">
-          <a class="navbar-item" href="https://hypernerf.github.io">
-            HyperNeRF
-          </a>
-          <a class="navbar-item" href="https://nerfies.github.io">
-            Nerfies
-          </a>
-          <a class="navbar-item" href="https://latentfusion.github.io">
-            LatentFusion
-          </a>
-          <a class="navbar-item" href="https://photoshape.github.io">
-            PhotoShape
-          </a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</nav> -->
-
-
-<section class="hero">
+  <section class="hero">
   <div class="hero-body">
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">SALT:Parameter-Efficient Fine-Tuning via Singular Value Adaptation with Low-Rank Transformation</h1>
+          <h1 class="title is-2 publication-title">SALT: Parameter-Efficient Fine-Tuning via Singular Value Adaptation with Low-Rank Transformation.</h1>
           <div class="is-size-5 publication-authors">
-            <span class="author-block">
-            <span class="author-block">
-            <span class="author-block">
-            </span>
-            <span class="author-block">
-            </span>
-            <span class="author-block">
-            </span>
-            <span class="author-block">
-            </span>
-            <span class="author-block">
-            </span>
+            <span class="author-block"><a href="https://www.linkedin.com/in/abdelrahman-el-sayed-289464275/">Abdelrahman Elsayed</a><sup><b style="font-size: 20px;">*</b></sup>,</span>
+            <span class="author-block"><a href="https://www.linkedin.com/in/sarim-hashmi-b10b35136/">Sarim Hashmi</a><sup><b style="font-size: 20px;">*</b></sup>,</span>
+            <span class="author-block"><a href="https://www.linkedin.com/in/mohamed-alsiagy-853540210/">Mohammed Elseiagy</a>,</span>
+            <span class="author-block"><a href="https://huwang01.github.io">Hu Wang</a>,</span>
+            <span class="author-block"><a href="https://www.linkedin.com/in/ibrahim-almakky/">Ibrahim Almakky</a>,</span>
+            <span class="author-block"><a href="https://scholar.google.co.uk/citations?user=9dfn5GkAAAAJ&hl=en">Mohammad Yaqub</a></span>
           </div>
 
           <div class="is-size-5 publication-authors">
-  
-          </div>
-<!-- 
+            <span class="author-block"><b style="font-size: 20px;">*</b> Equal Contributions,</span>
+            <!-- <span class="author-block"><sup>♠</sup> Equally contributing second authors</span> -->
+            <br>
+            <span class="author-block">Mohamed Bin Zayed University of Artificial Intelligence</span>
+          </div>  
+
           <div class="column has-text-centered">
             <div class="publication-links">
+              <!-- PDF Link. -->
               <span class="link-block">
-                <a href="https://arxiv.org/pdf/2011.12948"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>Paper</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="https://arxiv.org/abs/2011.12948"
+                <a href="https://arxiv.org/abs/2503.16055" target="_blank"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
@@ -128,17 +93,18 @@
                   <span>arXiv</span>
                 </a>
               </span>
+            </span>
               <span class="link-block">
-                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                  </span>
-                  <span>Video</span>
-                </a>
-              </span>
+                  <a href="https://huggingface.co/collections/pythn/salt-datasets-67eb927638561c78597bae41" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-database"></i>
+                    </span>
+                    <span>Datasets</span>
+                  </a>
+                </span>
               <span class="link-block">
-                <a href="https://github.com/google/nerfies"
+                <a href="https://github.com/BioMedIA-MBZUAI/SALT" target="_blank"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -146,21 +112,461 @@
                   <span>Code</span>
                   </a>
               </span>
+
               <span class="link-block">
-                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                <a href="#bibtex"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
-                      <i class="far fa-images"></i>
+                      <i class="ai ai-obp"></i>
                   </span>
-                  <span>Data</span>
-                  </a>
+                  <span>BibTex</span>
+                </a>
+              </span>
             </div>
-
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
   </div>
 </section>
+
+  <section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+        <p align="justify"> 
+          <b>Can large pre-trained models be efficiently adapted for precise medical image segmentation? </b> We present SALT, a novel parameter-efficient fine-tuning method that combines SVD-based singular value adaptation with low-rank transformations. By tuning only 3.9% of the model parameters, SALT achieves a 2–5% boost in Dice scores over existing approaches, even on datasets as small as 20 samples. It leverages the strengths of both LoRA and full SVD fine-tuning to capture critical domain-specific nuances while preserving the rich, pre-trained representations, delivering robust segmentation performance with minimal computational overhead.
+        </p>
+        <!-- <br> -->
+
+    <div class="column">
+        <div style="text-align:center;" >
+            <!-- <h4 class="subtitle has-text-centered"> -->
+              <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/sample.mp4"
+                        type="video/mp4">
+              </video>
+            <!-- </h4> -->
+            <div class="content has-text-justified">
+                <p align="justify"> <b> <span>SALT: Precision Unleashed</span></b>
+                  Watch a demo for our cutting-edge SALT model transforms raw medical images detailed segmentation masks.</p>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+    </div>
+  </div>
+
+</section>
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop has-text-centered">
+                 <!-- Visual Effects. -->
+      <h2 class="title is-3">Abstract</h2>
+      <div class="content has-text-justified">
+        <p>
+ The complex nature of medical image segmentation calls for
+models that are specifically designed to capture detailed, domain-specific
+features. Large foundation models offer considerable flexibility, yet the
+cost of fine-tuning these models remains a significant barrier. Parameter-
+Efficient Fine-Tuning (PEFT) methods, such as Low-Rank Adaptation
+(LoRA), efficiently update model weights with low-rank matrices but
+may suffer from underfitting when the chosen rank is insufficient to
+capture domain-specific nuances. Conversely, full-rank Singular Value
+Decomposition (SVD) based methods provide comprehensive updates
+by modifying all singular values, yet they often lack flexibility and ex-
+hibit variable performance across datasets. We propose SALT (Singular
+Value Adaptation with Low-Rank Transformation), a method that se-
+lectively adapts the most influential singular values using trainable scale
+and shift parameters while complementing this with a low-rank update
+for the remaining subspace. This hybrid approach harnesses the advan-
+tages of both LoRA and SVD, enabling effective adaptation without
+relying on increasing model size or depth. Evaluated on 5 challenging
+medical datasets, ranging from as few as 20 samples to 1000, SALT
+outperforms state-of-the-art PEFT (LoRA and SVD) by 2% to 5% in
+Dice with only 3.9% trainable parameters, demonstrating robust adap-
+tation even in low-resource settings. 
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+</section>
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">A novel PEFT framework that synergizes the strengths of SVD and low-rank adaptation.</h2>
+        <div class="content has-text-justified">
+          <p>
+          <h5> <b> Our contributions: </b></h5>
+           <ol>
+             <li> We introduce <b> SALT</b>, a hybrid PEFT method utilizing SVD-based domi-
+              nant singular value adaptation with low-rank residual updates, achieving
+              parameter-efficient domain adaptation. </li>
+            <li>We demonstrate <b>SALT’s utility through extensive experiments </b> on diverse
+              medical datasets from various modalities, showing consistent improvements
+              over state-of-the-art PEFT methods.
+            <li>We present a comprehensive study exploring <b>how singular values distributions
+              and trainable parameters’ allocation impact domain-specific fine-tuning </b> for
+              different challenging medical datasets.
+            </li>
+
+           </ol>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">SALT architecture</h2>
+        <section class="slider">
+          <!-- Left arrow -->        
+          <!-- Slider container -->
+          <div class="slider-container">
+            <!-- Slider track -->
+            <div class="slider-track">
+              <!-- Each "slide" contains one or more images -->
+              <div class="slide">
+                <img src="./static/images/method.png" alt="Image 1">
+              </div>
+              <div class="slide">
+                <img src="./static/images/comp.png" alt="Image 2">
+              </div>
+              <!-- Add more slides as needed -->
+            </div>
+            <div class="bubble"></div>
+          </div>
+        
+          <!-- Right arrow -->
+        </section>        
+        <div class="content has-text-justified">
+          <p>
+            <b>SALT</b> extends the pre-trained <b>SAM architecture</b> by selectively adapting the image encoder’s weights through singular value decomposition and low-rank updates. As shown in the figure, the original SAM model—comprising an image encoder, a prompt encoder, and a mask decoder—remains mostly frozen. Within each <b>multi-head attention (MHA) block of the image encoder, the top singular values of the weight matrices are scaled and shifted, while the lower singular subspace is refined using a LoRA-based low-rank transformation</b>. Only these newly introduced parameters, along with <b>normalization and text-affine layers</b>, are trainable. This approach ensures that the bulk of the pre-trained model is preserved, while SALT captures subtle domain-specific features for precise medical segmentation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop has-text-centered">
+                 <!-- Visual Effects. -->
+      <h2 class="title is-3">Evaluation and Results Analysis</h2>
+      <div class="content has-text-justified">
+        <p>
+          We evaluated SALT on 5 datasets spanning three anatomical domains:
+          neurovascular analysis with <b>DIAS</b>, a dynamic 2D+time DSA dataset for
+          intracranial artery segmentation in cerebrovascular disease <b>(20 train/10 test)</b>.
+          Retinal assessment via <b>ROSE</b> for OCT-Angiography-based microvasculature
+          analysis <b>(22 train/8 test)</b>. <b>DRIVE</b> for diabetic retinopathy screening in RGB
+          fundus images (14 train/6 test). Cardiovascular studies using <b>ARCADE
+          (700 train/300 test) </b> and <b>XRay-Angio (93 train/41 test)</b>, both leveraging X-
+          ray angiography, where the former is for region-based coronary artery disease
+          diagnostics and the latter is for multiscale segmentation of occluded vessels.
+        </p>
+
+        <table>
+          <caption>Summary of SALT's Performance vs. SOTA PEFT Methods</caption>
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>Avg. Dice</th>
+              <th>Avg. HD95</th>
+              <th>Trainable Params</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>LoRA (rank=256)</td>
+              <td>0.70</td>
+              <td>25.94</td>
+              <td>14.08%</td>
+            </tr>
+            <tr>
+              <td>S-SAM</td>
+              <td>0.71</td>
+              <td>30.12</td>
+              <td>0.40%</td>
+            </tr>
+            <tr>
+              <td><strong>SALT (Ours)</strong></td>
+              <td><b>0.74</b></td>
+              <td><b>23.87</b></td>
+              <td><b>3.90%</b></td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          The table shows the average of Dice scores and Hausdorff distances (HD95) across all datasets for S-SAM, LoRA,and SALT. The results highlight that SALT stands out for its balanced performance. SALT achieves the highest average Dice score (0.74) and the lowest average HD95 (23.87), indicating more accurate and precise segmentation compared to the other methods. Notably, while LoRA requires a significantly higher percentage of trainable parameters (14.08%) and S-SAM uses very few (0.40%), SALT manages to deliver superior performance with a moderate 3.90% of trainable parameters.
+      </div>
+    </div>
+  </div>
+</section>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    
+    <!-- Latent space editing applications -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">Qualitative Comparison</h2>
+        <div class="content has-text-centered">
+            <img src="./static/images/qual.png">
+        </div>
+        <div class="content has-text-justified">
+          <p> 
+              The figure offers a qualitative comparison of segmentation outputs from several methods. Notably, SALT stands out by closely matching the ground-truth masks and capturing intricate details, leading to more precise and reliable segmentation.</p>
+        </div>
+      </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+      <h3 class="title is-3 has-text-centered">Click images to get a more detailed look</h3>
+      <div id="player" style="cursor:pointer;">
+      </div>
+      <script>
+        class ClickListener {
+          constructor(images) {
+            this.rootElement = document.querySelector("#player");
+            // Create a container for this instance so images crossfade within it.
+            this.container = document.createElement("div");
+            this.container.style.position = "relative";
+            this.container.style.display = "inline-block";
+            this.container.style.width = "320px";
+            this.container.style.height = "320px";
+            this.rootElement.appendChild(this.container);
+            
+            this.images = images;
+            this.idx = 0;
+            this.currentImage = null;
+            this.init();
+          }
+          
+          init() {
+            this.currentImage = document.createElement("img");
+            this.currentImage.src = this.images[this.idx];
+            this.currentImage.style.width = "320px";
+            this.currentImage.style.height = "320px";
+            this.currentImage.style.position = "absolute";
+            this.currentImage.style.left = "0";
+            this.currentImage.style.top = "0";
+            this.currentImage.style.opacity = "1";
+            this.currentImage.style.transition = "opacity 0.5s ease";
+            this.container.appendChild(this.currentImage);
+            this.container.onclick = this.nextImage.bind(this);
+          }
+          
+          nextImage() {
+            // Create new image element for the next image.
+            const newImg = document.createElement("img");
+            this.idx = (this.idx + 1) % this.images.length;
+            newImg.src = this.images[this.idx];
+            newImg.style.width = "320px";
+            newImg.style.height = "320px";
+            newImg.style.position = "absolute";
+            newImg.style.left = "0";
+            newImg.style.top = "0";
+            newImg.style.opacity = "0";
+            newImg.style.transition = "opacity 0.5s ease";
+            
+            // Append the new image on top of the current image.
+            this.container.appendChild(newImg);
+            
+            // Force reflow (optional) then fade in the new image.
+            newImg.offsetHeight;
+            newImg.style.opacity = "1";
+            
+            // After the fade transition, remove the old image.
+            setTimeout(() => {
+              this.container.removeChild(this.currentImage);
+              this.currentImage = newImg;
+            }, 500);
+          }
+        }
+      
+      
+      </script>
+  
+      <script>
+      new ClickListener(['./static/images/arcade.png', './static/images/arcade_pred.png'])
+      new ClickListener(['./static/images/rose.png', './static/images/rose_pred.png'])
+      new ClickListener(['./static/images/dias.png', './static/images/dias_pred.png'])
+      new ClickListener(['./static/images/db.png', './static/images/db_pred.png'])
+      new ClickListener(['./static/images/drive.png', './static/images/drive_pred.png'])
+      // Text card: This card doesn't cycle images. It just displays a note.
+      (function addTextCard() {
+        const player = document.querySelector("#player");
+        const textCard = document.createElement("div");
+        textCard.style.position = "relative";
+        textCard.style.display = "inline-block";
+        textCard.style.width = "320px";
+        textCard.style.height = "320px";
+        textCard.style.border = "1px solid #ccc";
+        textCard.style.padding = "1rem";
+        textCard.style.boxSizing = "border-box";
+        textCard.style.verticalAlign = "top";
+        textCard.innerHTML = `
+          <h4 class="title is-4">Note</h4>
+          <p>This additional card contains text. You can include instructions, a brief note, or any other information here to complement the image samples.</p>
+        `;
+        player.appendChild(textCard);
+      })();
+      </script>
+      </div>
+     </div>
+     <div class="container is-max-desktop">
+    
+      <!-- Latent space editing applications -->
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3 has-text-centered">Related works</h2>
+          <div class="content has-text-justified">
+            <p>
+              <li>Nupur Kumari, Richard Zhang, Eli Shechtman, and Jun-Yan Zhu. <a href="https://arxiv.org/abs/2112.09130">Ensembling Off-the-shelf Models for GAN Training.</a> In IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2022.</li><br>
+              <li>Robin Rombach, Andreas Blattmann, Dominik Lorenz, Patrick Esser, and Bjorn Ommer. <a href="https://arxiv.org/abs/2112.10752">High-resolution image synthesis with latent diffusion models.</a> In IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2022.</li><br>
+              <li>Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sastry, Amanda Askell, Pamela Mishkin, Jack Clark, et al. <a href="https://arxiv.org/abs/2103.00020">Learning transferable visual models from natural language supervision.</a> In International Conference on Machine Learning (ICML), 2021.</li><br>
+              <li>Tero Karras, Samuli Laine, Miika Aittala, Janne Hellsten, Jaakko Lehtinen, and Timo Aila. <a href="https://arxiv.org/abs/1912.04958">Analyzing and Improving the Image Quality of StyleGAN.</a> In IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2020.</li><br>
+              <li>Han Zhang, Tao Xu, Hongsheng Li, Shaoting Zhang, Xiaogang Wang, Xiaolei Huang, and Dimitris N Metaxas. <a href="https://arxiv.org/abs/1612.03242">StackGAN: Text to Photo-realistic Image Synthesis with Stacked Generative Adversarial Networks.</a> In IEEE International Conference on Computer Vision (ICCV), 2017.</li><br>
+              <li> Scott Reed, Zeynep Akata, Xinchen Yan, Lajanugen Logeswaran, Bernt Schiele, and Honglak Lee. <a href="https://arxiv.org/abs/1605.05396">Generative Adversarial Text to Image Synthesis</a>. In International Conference on Machine Learning (ICML), 2016.</li><br>
+            </p>
+          </div>
+          <!-- Prompt Interpolation image -->
+        </div>
+      </div>
+
+  </div>
+</section>
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title"><a id="bibtex">BibTeX</a></h2>
+    <pre><code>@inproceedings{kang2023gigagan,
+  author    = {Kang, Minguk and Zhu, Jun-Yan and Zhang, Richard and Park, Jaesik and Shechtman, Eli and Paris, Sylvain and Park, Taesung},
+  title     = {Scaling up GANs for Text-to-Image Synthesis},
+  booktitle = {Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year      = {2023},
+}</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Website adapted from the following <a href="https://mingukkang.github.io/GigaGAN/">source code</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+<script src="juxtapose/js/juxtapose.js"></script>
+
+<script>
+var slider;
+let origOptions = {
+    "makeResponsive": true,
+    "showLabels": true,
+    "mode": "horizontal",
+    "showCredits": true,
+    "animate": true,
+    "startingPosition": "50"
+};
+
+const juxtaposeSelector = "#juxtapose-embed";
+const transientSelector = "#juxtapose-hidden";
+
+  inputImage.src = "./static/images/".concat(name, "_input.jpg")
+  outputImage.src = "./static/images/".concat(name, "_output.jpg")
+
+  let images = [inputImage, outputImage];
+  let options = slider.options;
+  options.callback = function(obj) {
+      var newNode = document.getElementById(obj.selector.substring(1));
+      var oldNode = document.getElementById(juxtaposeSelector.substring(1));
+      console.log(obj.selector.substring(1));
+      console.log(newNode.children[0]);
+      oldNode.replaceChild(newNode.children[0], oldNode.children[0]);
+      //newNode.removeChild(newNode.children[0]);
+      
+  };
+  
+  slider = new juxtapose.JXSlider(transientSelector, images, options);
+};
+
+
+
+(function() {
+    slider = new juxtapose.JXSlider(
+        juxtaposeSelector, origImages, origOptions);
+    //document.getElementById("left-button").onclick = replaceLeft;
+    //document.getElementById("right-button").onclick = replaceRight;
+})();
+  // Get the image text
+  var imgText = document.getElementById("imgtext");
+  // Use the same src in the expanded image as the image being clicked on from the grid
+  // expandImg.src = imgs.src;
+  // Use the value of the alt attribute of the clickable image as text inside the expanded image
+  imgText.innerHTML = name;
+  // Show the container element (hidden with CSS)
+  // expandImg.parentElement.style.display = "block";
+
+$(".flip-card").click(function() {
+            console.log("fading in")
+            div_back = $(this).children().children()[1]
+            div_front = $(this).children().children()[0]
+            // console.log($(this).children("div.flip-card-back"))
+            console.log(div_back)
+            $(div_front).addClass("out");
+            $(div_front).removeClass("in");
+
+            $(div_back).addClass("in");
+            $(div_back).removeClass("out");
+
+});
+
+$(".flip-card").mouseleave(function() {
+            console.log("fading in")
+            div_back = $(this).children().children()[1]
+            div_front = $(this).children().children()[0]
+            // console.log($(this).children("div.flip-card-back"))
+            console.log(div_back)
+            $(div_front).addClass("in");
+            $(div_front).removeClass("out");
+
+            $(div_back).addClass("out");
+            $(div_back).removeClass("in");
+
+});
+
+</script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>    
+
 </body>
 </html>
