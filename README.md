@@ -223,8 +223,19 @@ Here’s a brief summary of SALT’s performance versus other PEFT methods:
 ---
 ## Citations
 
-Coming Soon...
+If you use this work, please cite:
 
+```bibtex
+@misc{elsayed2025saltsingularvalueadaptation,
+      title={SALT: Singular Value Adaptation with Low-Rank Transformation}, 
+      author={Abdelrahman Elsayed and Sarim Hashmi and Mohammed Elseiagy and Hu Wang and Mohammad Yaqub and Ibrahim Almakky},
+      year={2025},
+      eprint={2503.16055},
+      archivePrefix={arXiv},
+      primaryClass={eess.IV},
+      url={https://arxiv.org/abs/2503.16055}, 
+}
+```
 ---
 
 ## License
